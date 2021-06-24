@@ -1,11 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import JustifyFlexStart from './JustifyFlexStart'
-import JustifyFlexEnd from './JustifyFlexEnd';
-import JustifyCenter from './JustifyCenter';
-import JustifySpaceBetween from './JustifySpaceBetween';
-import JustifySpaceAround from './JustifySpaceAround';
-import JustifySpaceEvenly from "./JustifySpaceEvenly";
+import JustifyFlexStart from './justify/JustifyFlexStart'
+import JustifyFlexEnd from './justify/JustifyFlexEnd';
+import JustifyCenter from './justify/JustifyCenter';
+import JustifySpaceBetween from './justify/JustifySpaceBetween';
+import JustifySpaceAround from './justify/JustifySpaceAround';
+import JustifySpaceEvenly from './justify/JustifySpaceEvenly';
+import AlignFlexStart from './align/AlignFlexStart';
+import AlignFlexEnd from './align/AlignFlexEnd';
+import AlignStretch from './align/AlignStretch';
+import AlignCenter from './align/AlignCenter';
+import AlignBaseline from './align/AlignBaseline';
 
 const Flex = () => {
 
@@ -24,7 +29,7 @@ const Flex = () => {
 
   return (
 		<Wrapper>
-			<HeaderContainer>
+			<div>
 				<FlexHeader>Flex</FlexHeader>
 				{showJustify ? (
 					<JustifyButton onClick={handleJustifyClick}>
@@ -44,9 +49,10 @@ const Flex = () => {
 						Show Align
 					</AlignButton>
 				)}
-			</HeaderContainer>
+			</div>
 			{showJustify ? (
 				<>
+          <h3>justify-content:</h3>
 					<JustifyFlexStart />
 					<JustifyFlexEnd />
 					<JustifyCenter />
@@ -57,6 +63,12 @@ const Flex = () => {
 			) : null}
       {showAlign ? (
         <>
+          <h3>align-items:</h3>
+          <AlignFlexStart />
+          <AlignFlexEnd />
+          <AlignStretch />
+          <AlignCenter />
+          <AlignBaseline />
         </>
       ) : null}
 		</Wrapper>
@@ -69,10 +81,8 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	background: #f7deba;
+  padding: 0 15px;
 `;
-
-const HeaderContainer = styled.div`
-`
 
 const FlexHeader = styled.h2`
   display: inline-block;
